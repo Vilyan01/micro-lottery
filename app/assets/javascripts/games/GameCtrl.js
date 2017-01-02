@@ -7,9 +7,9 @@ angular.module('lottery')
       $scope.games = games.games;
 
       $scope.registerForGame = function(game) {
-        if(game.players.length < game.maxPlayers) {
+        if(game.players.length < game.max_players) {
           game.players.push({name: "Player"});
-          if(game.players.length == game.maxPlayers) {
+          if(game.players.length === game.max_players) {
             games.chooseWinner(game);
           }
         }

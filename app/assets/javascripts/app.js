@@ -11,7 +11,12 @@ angular.module('lottery', ['ui.router', 'templates'])
       .state('games', {
         url: '/games',
         templateUrl: 'games/_games.html',
-        controller: 'GameCtrl'
+        controller: 'GameCtrl',
+        resolve: {
+          gamesPromies: ['games', function(games) {
+            return games.getAll();
+          }]
+        }
       })
 
       $urlRouterProvider.otherwise('home');

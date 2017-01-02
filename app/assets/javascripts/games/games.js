@@ -1,15 +1,26 @@
 angular.module('lottery')
   .factory('games', [
-    function() {
+    '$http',
+    function($http) {
       var o = {
-        games: [
-          {title: "Fish", maxPlayers: 5, buy_in: "$5.00", players: [{name: "Brian"}, {name: "Jeremy"}]},
-          {title: "Bears", maxPlayers: 3, buy_in: "$15.00", players: [{name: "James"}, {name: "Josh"}]}
-        ]
+        games: []
+      };
+
+      o.getAll = function() {
+        console.log("Getting games");
+        return $http({
+          method: 'GET',
+          url: '/api/games.json'
+        }).then(function successCallback(response) {
+          console.log(response);
+          angular.copy(response.data, o.games);
+        }, function  errorCallback(respomse) {
+          console.log("Error getting games");
+        });
       };
 
       o.add = function(t, m, b) {
-        o.games.push({title: t, maxPlayers: m, buy_in: b, players:[]});
+        o.games.push({title: t, max_players: m, buy_in: b, players:[]});
       }
 
       o.chooseWinner = function(game) {
