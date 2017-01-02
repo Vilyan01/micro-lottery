@@ -16,4 +16,18 @@
       <button class="btn btn-primary" ng-click="registerForGame(game)">Register</button>
     </div>
   </div>
+  <hr>
+  <h3>Create a new game</h3>
+  <form ng-submit="addGame()">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Title" ng-model="title"></input>
+    </div>
+    <div class="form-group">
+      <input type="number" class="form-control" placeholder="Max Players" ng-model="max"></input>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Buy In" ng-model="buy_in"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Game</button>
+  </form>
 </div>
