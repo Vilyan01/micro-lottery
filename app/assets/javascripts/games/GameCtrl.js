@@ -19,7 +19,7 @@ angular.module('lottery')
         if(!$scope.title || $scope.title === '') {return;}
         if(!$scope.max || $scope.max < 0) {return;}
         if(!$scope.buy_in || $scope.buy_in === '') {return;}
-        games.add($scope.title, $scope.max, $scope.buy_in);
+        games.add({title: $scope.title, max_players: $scope.max, buy_in: $scope.buy_in});
       }
     }
   ]);

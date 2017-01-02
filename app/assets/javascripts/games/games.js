@@ -14,14 +14,23 @@ angular.module('lottery')
         }).then(function successCallback(response) {
           console.log(response);
           angular.copy(response.data, o.games);
-        }, function  errorCallback(respomse) {
+        }, function  errorCallback(response) {
           console.log("Error getting games");
         });
       };
 
-      o.add = function(t, m, b) {
-        o.games.push({title: t, max_players: m, buy_in: b, players:[]});
-      }
+      o.add = function(game) {
+        console.log({game: game})
+        return $http({
+          method: 'POST',
+          url: '/api/games.json',
+          data: {game: game}
+        }).then(function successCallback(response) {
+          o.games.push(response.data);
+        }, function errorCallback(response) {
+          console.log("Error creating game");
+        });
+      };
 
       o.chooseWinner = function(game) {
         var winner = Math.floor(Math.random() * game.players.length);

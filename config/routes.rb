@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     get 'games', :to => 'games#index'
+    post 'games', :to => 'games#create'
   end
 end
