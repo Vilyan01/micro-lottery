@@ -11,7 +11,7 @@ module Api
 
     private
     def game_params
-      params.require(:game).permit(:title, :buy_in, :max_players)
+      params.require(:game).permit(:title, :buy_in, :max_players, :description)
     end
   end
 end
